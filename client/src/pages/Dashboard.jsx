@@ -16,7 +16,6 @@ const Dashboard = () => {
 
   const getDashboardData = async () => {
     try {
-      if (!token) return;
       const { data } = await axios.get("/api/user/get-user-creations", {
         headers: { Authorization: `Bearer ${token}` },
       });
