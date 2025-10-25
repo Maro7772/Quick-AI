@@ -12,7 +12,7 @@ const Layout = () => {
 
   return user ? (
     <div className="flex flex-col items-start justify-start h-screen">
-      <nav className="w-full px-8 min-h-14 flex items-center justify-between border-b border-gray-200">
+      <nav className="w-full px-8 min-h-14 flex items-center justify-between border-b border-gray-200 max-sm:sticky top-0 bg-white z-20">
         <img
           src={assets.logo}
           alt="logo"
@@ -33,7 +33,7 @@ const Layout = () => {
       </nav>
       <div className="flex-1 w-full flex">
         <Sidebar sidebar={sidebar} setSidebar={setSidebar} />
-        <div className="flex-1 bg-[#F4F7FB]">
+        <div className="flex-1 bg-[#F4F7FB] ml-60 max-sm:ml-0">
           <Outlet />
         </div>
       </div>

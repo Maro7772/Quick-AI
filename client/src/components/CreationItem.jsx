@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Markdown from "react-markdown";
 
 const CreationItem = ({ item }) => {
@@ -6,11 +6,11 @@ const CreationItem = ({ item }) => {
   return (
     <div
       onClick={() => setExpanded(!expanded)}
-      className="p-4 max-w-5xl text-sm bg-white border border-gray-200 rounded-lg cursor-pointer"
+      className="p-4 max-md:p-2  max-w-5xl max-md:w-full text-sm bg-white border border-gray-200 rounded-lg cursor-pointer"
     >
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4 max-md:gap-0">
         <div>
-          <h2>{item.prompt}</h2>
+          <h2 className="max-md:max-w-xs overflow-auto">{item.prompt}</h2>
           <p className="text-gray-500">
             {item.type} - {new Date(item.created_at).toLocaleDateString()}
           </p>

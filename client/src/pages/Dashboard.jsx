@@ -3,8 +3,8 @@ import { Gem, Sparkles } from "lucide-react";
 import { Protect } from "@clerk/clerk-react";
 import CreationItem from "../components/CreationItem";
 import axios from "axios";
-import useClerkToken from "../hooks/useClerkToken";
 import { toast } from "react-hot-toast";
+import { useAuth } from "@clerk/clerk-react";
 
 axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
@@ -12,12 +12,12 @@ const Dashboard = () => {
   const [creations, setCreations] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const token = useClerkToken();
+  const { getToken } = useAuth();
 
   const getDashboardData = async () => {
     try {
       const { data } = await axios.get("/api/user/get-user-creations", {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { Authorization: `Bearer ${await getToken()}` },
       });
       if (data.success) {
         setCreations(data.creations);
@@ -36,7 +36,7 @@ const Dashboard = () => {
 
   return (
     <div className="h-full overflow-y-scroll p-6">
-      <div className="flex justify-start gap-4 flex-wrap">
+      <div className="flex justify-start gap-4 flex-wrap flex-col md:flex-row">
         {/* Total Creattions Card */}
         <div className="flex justify-between items-center w-72 p-4 px-6 bg-white rounded-xl border border-gray-200">
           <div className="text-slate-600">

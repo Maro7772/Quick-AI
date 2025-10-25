@@ -61,9 +61,8 @@ const Sidebar = ({ sidebar, setSidebar }) => {
   const { signOut, openUserProfile } = useClerk();
   return (
     <div
-      className={`w-60 bg-white border-r border-gray-200 flex flex-col justify-between items-center max-sm:absolute top-14 bottom-0 ${
-        sidebar ? "translate-x-0" : "max-sm:-translate-x-full"
-      } transition-all duration-300 ease-in-out`}
+      className={`w-60 bg-white border-r border-gray-200 flex flex-col justify-between items-center z-20 fixed top-14 left-0 h-[calc(100vh-3.5rem)] overflow-y-auto transition-transform duration-300 ease-in-out
+  ${sidebar ? "translate-x-0" : "-translate-x-full sm:translate-x-0"}`}
     >
       <div className="my-7 w-full">
         <img
